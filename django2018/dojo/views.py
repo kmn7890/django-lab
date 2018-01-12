@@ -1,12 +1,12 @@
 import os
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, JsonResponse
 # Create your views here.
 
 def mysum(request, numbers):
     # numbers = "1/2/12/123/1234/1231231"
-    # request : HttpRequest의 인스턴스
+    # request : HttpRequest의 인스턴스))
     result = sum(map(lambda s: int(s or 0), numbers.split('/')))
     return HttpResponse(result)
 
@@ -25,7 +25,8 @@ def postlist1(request):
 
 def postlist2(request):
     name="공유"
-    return render(request, 'dojo/post_list.html', {'name':name})
+    which_view='Function Based View'
+    return render_to_response('dojo/post_list.html', {'name':name, 'which_view':which_view})
 
 
 #json 형식으로 응답하기
