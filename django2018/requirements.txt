@@ -1,1 +1,5 @@
 django-extensions
+django-debug-toolbar
+django==1.10.5
+ipython[notebook]
+
