@@ -17,7 +17,7 @@ class Post(models.Model):
                               ('jaeyoon','Jaeyoon Song'),
                               ),
                               verbose_name='author as a team member')
-    Category = models.IntegerField(choices=(
+    category = models.IntegerField(choices=(
                              (1,'Mission'),
                              (2,'Studies'),
                              (3,'Daily SSTNS'),
