@@ -10,6 +10,12 @@ def lnglat_validator(value):
         raise ValidationError('Invalid lng/lat type')
 
 class Post(models.Model):
+    STATUS_CHOICES = (
+        ('available','available'),
+        ('contracted','contracted'),
+        ('denied','denied'),
+        ('finished','finished'),
+    )
     author = models.CharField(max_length=20, default='Mina Kang', choices=(
                               ('mina','Mina Kang'),
                               ('manjun','Manjun Gim'),
@@ -23,12 +29,15 @@ class Post(models.Model):
                              (3,'Daily SSTNS'),
                              ), default=0)
     title = models.CharField(max_length=200, null=True)
-
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='available')
     content = models.TextField()
     tags = models.CharField(max_length=100, blank = True)
     lnglat = models.CharField(max_length=50, blank=True, validators=[lnglat_validator], help_text='경도/위도 포맷으로 넣어주세요')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
 
 class Comment(models.Model):
     post = models.ForeignKey(Post)

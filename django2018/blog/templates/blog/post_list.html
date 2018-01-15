@@ -9,5 +9,26 @@
         <p>
             Hello Djnago DJ Kang's here. Welcome to my lab.
         </p>
+
+
+    <form action="" method="get">
+        <input type="text" name="q" value="{{ q }}"/>
+        <input type="submit" value="검색"/>
+    </form>
+
+
+
+    <ul>
+    {% for post in post_list %}
+        <li>
+            {{ post.id }}
+            {{ post.title }}
+            <small>by {{ post.author }}</small>
+            <small>at {{ post.updated_at }}</small>s
+        </li>
+    {% endfor %}
+    </ul>
+
     </body>
 </html>
+
