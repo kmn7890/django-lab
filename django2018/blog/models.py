@@ -1,28 +1,31 @@
 import re
 from django.db import models
 from django.forms import ValidationError
+from django.conf import settings
 from django.utils import timezone
 
 # Create your models here.
 
 def lnglat_validator(value):
+
     if not re.match(r'^([+-]\d+\.?\d*),([+-]?\d+\.?\d*)$', value):
         raise ValidationError('Invalid lng/lat type')
 
 class Post(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
     STATUS_CHOICES = (
         ('available','available'),
         ('contracted','contracted'),
         ('denied','denied'),
         ('finished','finished'),
     )
-    author = models.CharField(max_length=20, default='Mina Kang', choices=(
-                              ('mina','Mina Kang'),
-                              ('manjun','Manjun Gim'),
-                              ('seunghun','Seunghun Shin'),
-                              ('jaeyoon','Jaeyoon Song'),
-                              ),
-                              verbose_name='author as a team member')
+    # author = models.CharField(max_length=20, default='Mina Kang', choices=(
+    #                           ('mina','Mina Kang'),
+    #                           ('manjun','Manjun Gim'),
+    #                           ('seunghun','Seunghun Shin'),
+    #                           ('jaeyoon','Jaeyoon Song'),
+    #                           ),
+    #                           verbose_name='author as a team member')
     category = models.IntegerField(choices=(
                              (1,'Mission'),
                              (2,'Studies'),
@@ -35,7 +38,7 @@ class Post(models.Model):
     lnglat = models.CharField(max_length=50, blank=True, validators=[lnglat_validator], help_text='경도/위도 포맷으로 넣어주세요')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    tag_set = models.ManyToManyField('Tag')
+    tag_set = models.ManyToManyField('Tag', blank=True)
 
     class Meta:
         ordering = ['-id']

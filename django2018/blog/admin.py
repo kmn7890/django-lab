@@ -5,7 +5,7 @@ from django.utils.safestring import mark_safe
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['id','author','title','content_size','status','created_at','updated_at']
+    list_display = ['id','user','title','content_size','status','created_at','updated_at']
     actions = ['make_available','make_denied','make_contracted','make_finished']
 
     def content_size(self, post):
