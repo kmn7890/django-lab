@@ -1,12 +1,7 @@
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
-        <title>Django Lab</title>
-    </head>
-    <body>
-        <h1>Django Lab</h1>
-        <p>
+{% extends "blog/layout.html" %}
+
+{% block content %}
+          <p>
             Hello Djnago DJ Kang's here. Welcome to my lab.
         </p>
 
@@ -31,6 +26,17 @@
         </li>
     {% endfor %}
     </ul>
+
+{% endblock %}
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+        <title>Django Lab</title>
+    </head>
+    <body>
+        <h1>Django Lab</h1>
 
     </body>
 </html>
