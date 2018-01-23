@@ -1,14 +1,18 @@
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
-        <title>{% block title %} Django Lab {% endblock %}</title>
-    </head>
-    <body>
-        <h1>Django Lab</h1>
-       {% block content %}
-        {% endblock %}
+{% extends "layout.html" %}
+{% block title %} doumixme blog {% endblock %}
+{% block content %}
+ <div class="container">
+        <div class="jumbotron">
+        <h1>Django Template and Bootstrap <sup>by doumixme </sup></h1>
+        <p>Hello Djnago DJ Kang's here. Welcome to my lab.</p>
+        <p>
+            <a class="btn btn-lg btn-primary" href="http://facebook.com/QuantMKT">
+                그로스해커스 페이스북 그룹 &bkarow;
+            </a>
 
-    </body>
-</html>
-
+        </p>
+        </div>
+    </div>
+    {% block new %}
+    {% endblock %}
+{% endblock %}

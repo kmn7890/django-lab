@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% comment 여기 아래 방식대로 %}
+{% endcomment %}
+<form action="?lang=ko" method="POST" enctype="application/x-www-form-urlencoded">
+    {% csrf_token %}
+    <input type="text" name="title"/>
+    <textarea name="content" id="" cols="30" rows="10"></textarea>
+    <input type="text" name="latlng"/>
+</form>
+
+
+{% comment 아래는 파일의 주소만 날아가고 서버로 파일은 날아갈 수 없음 %}
+{% endcomment %}
+<form action="" method="GET">
+    <input type="file" name="photo">
+    <input type="submit" value="저장">
+</form>

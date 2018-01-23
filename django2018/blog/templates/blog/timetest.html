@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'blog/layout.html' %}
+{% block content %}
+    {% for each_time in time %}
+
+    {% ifchanged each_time.now.minute each_time.now.second %}
+        <a href="blog/list">{{ each_time.now|timesince }}{{ each_time.now|date:"s" }}</a>
+
+    {% endifchanged %}
+    {% endfor %}
+    {{ value|urlize }}
+    <a href="{% url 'blog:post_detail' id=1000 %}">
+    {% lorem %}]</a>
+    {% lorem 1 b random %}
+{% now "jS F Y H:i" %}
+{% include 'blog/post_list.html' with person="Mina" greeting="Hello" %}
+
+
+{% endblock %}

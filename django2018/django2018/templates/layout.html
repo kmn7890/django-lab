@@ -1,10 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %} doumixme {% endblock %}</title>
+    {% comment %} 여기서 부터 bootstrap template BULMA설치 {% endcomment %}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        html { position: relative; min-height: 100%; }
+        body { margin-bottom: 60px; }
+        #page-footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            background-color: #37dcdc;
+        }
+    </style>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-$END$
-</body>
+    <body>
+    {% comment "Optional note" %}
+    /* js comment 클라이언트단에서 무시 */ <!-- html 주석 --> {% 서버단에서 무시하는 주석, 불필요한 렌더링을 줄일 것임 %}
+    {% endcomment %}
+        <nav class="navbar navbar-default" >
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">doumixme</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Link</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">로그인</a></li>
+                    </ul>
+                </div>
+           </div>
+        </nav>
+       <div class="container">
+       <h1>Django Lab</h1>
+       </div>
+       {% block content %}
+       {% endblock %}
+    <div id="page-footer">
+        <div class="container">
+            <p class="text-muted">
+                &copy; 2018 sailing stones
+            </p>
+        </div>
+    </div>
+    </body>
+
 </html>
+

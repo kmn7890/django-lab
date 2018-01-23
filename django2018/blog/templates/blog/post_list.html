@@ -1,43 +1,28 @@
 {% extends "blog/layout.html" %}
 
-{% block content %}
-          <p>
-            Hello Djnago DJ Kang's here. Welcome to my lab.
-        </p>
+{% block new %}
 
-
+    {{ person }} {{ greeting }}
+    <div class="container">
     <form action="" method="get">
         <input type="text" name="q" value="{{ q }}"/>
         <input type="submit" value="검색"/>
     </form>
 
-
-
     <ul>
     {% for post in post_list %}
         <li>
             {{ post.id }}
-            <a href="/blog/{{ post.id }}/">
+            <a href="{% url "blog:post_detail" post.id %}">
             {{ post.title }}
             </a>
             {{ post.tags }}
             <small>by {{ post.author }}</small>
-            <small>at {{ post.updated_at }}</small>s
+            <small>at {{ post.updated_at }}</small>
         </li>
     {% endfor %}
     </ul>
+    </div>
 
 {% endblock %}
-
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
-        <title>Django Lab</title>
-    </head>
-    <body>
-        <h1>Django Lab</h1>
-
-    </body>
-</html>
 

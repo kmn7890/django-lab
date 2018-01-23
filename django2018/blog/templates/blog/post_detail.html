@@ -15,12 +15,23 @@
 
     <ul>
     {% for comment in post.comment_set.all %}
-    <li>
-        {{ comment.message }}
-        <small>by {{ comment.author }}</small>
-        <small>{{ comment.updated_at }}</small>
+        {% if forloop.last %}
+        <li>
+            <p>코멘트를 남겨보세요.</p>
+        </li>
+        {% endif %}
+        <li>
+
+            {{ comment.message }}
+            <small>by {{ comment.author }}</small>
+            <small>{{ comment.updated_at }}</small>
+    {% empty %}
+        첫번째 코멘트를 남겨보세요
     {% endfor %}
-    </li>
+        </li>
     </ul>
+
+    <a href="{% url "blog:post_list" %}">글 목록</a>
+    
 {% endblock %}
 
